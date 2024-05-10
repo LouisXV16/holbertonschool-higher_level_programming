@@ -7,3 +7,4 @@ if __name__ == "__main__":
         if avoid not in all_dir[i]:
             print(all_dir[i])
 
+
