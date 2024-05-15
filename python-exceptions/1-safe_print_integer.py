@@ -16,4 +16,3 @@ def safe_print_integer(value):
     except (ValueError, TypeError):
         # If a ValueError or TypeError is raised, the function returns False
         return False
-
