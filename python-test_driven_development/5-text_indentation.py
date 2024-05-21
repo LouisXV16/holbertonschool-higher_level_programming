@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""function that print a text with 2 new lines after each of these charcters: . , ? , :"""
+"""print a text with 2 new lines after each of these charcters: . , ? , :"""
 
 
 def text_indentation(text):
@@ -28,4 +28,3 @@ def text_indentation(text):
                 i += 1
         i += 1
     print(result.strip())
-
