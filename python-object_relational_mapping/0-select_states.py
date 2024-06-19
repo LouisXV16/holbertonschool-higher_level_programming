@@ -1,39 +1,39 @@
-#!/usr/bin/python3
-import sys
+#!/usr/bin/env python3
 import MySQLdb
+import sys
 
-def list_states(username, password, database):
-    # Connect to the database
+def list_states(username, password, dbname):
+    # Connect to the MySQL database
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
         passwd=password,
-        db=database
+        db=dbname
     )
 
     # Create a cursor object
-    cursor = db.cursor()
+    cur = db.cursor()
 
     # Execute the SQL query
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    cur.execute("SELECT id, name FROM states ORDER BY id ASC")
 
-    # Fetch all the rows
-    rows = cursor.fetchall()
+    # Fetch all the results
+    rows = cur.fetchall()
 
-    # Display the rows
+    # Print the results
     for row in rows:
         print(row)
 
     # Close the cursor and database connection
-    cursor.close()
+    cur.close()
     db.close()
 
 if __name__ == "__main__":
-    # Get the command line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    # List states
-    list_states(username, password, database)
+    if len(sys.argv) == 4:
+        username = sys.argv[1]
+        password = sys.argv[2]
+        dbname = sys.argv[3]
+        list_states(username, password, dbname)
+    else:
+        print("Usage: ./0-select_states.py <mysql username> <mysql password> <database name>")
